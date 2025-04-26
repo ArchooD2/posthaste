@@ -49,8 +49,8 @@ def upload(text, url, token=None):
 
     try:
         print("\n📤 Uploading to:", f'{url.rstrip("/")}/documents')
-        print("🧾 Headers:", headers)
-        print("📄 Payload preview:", repr(text[:100] + ('...' if len(text) > 100 else '')))
+        #print("🧾 Headers:", headers)
+        #print("📄 Payload preview:", repr(text[:100] + ('...' if len(text) > 100 else '')))
         response = requests.post(f'{url.rstrip("/")}/documents', headers=headers, data=text.encode('utf-8'))
         response.raise_for_status()
     except requests.exceptions.HTTPError as e:
