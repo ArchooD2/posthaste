@@ -40,7 +40,7 @@ def save_token_to_env(token):
     print("\n✅ Token applied to this session!")
 
 
-def upload(text, url, token=None):
+def upload(text, url, token=None, timeout=5):
     headers = {
         'Content-Type': 'text/plain'
     }
@@ -51,7 +51,7 @@ def upload(text, url, token=None):
         print("\n📤 Uploading to:", f'{url.rstrip("/")}/documents')
         #print("🧾 Headers:", headers)
         #print("📄 Payload preview:", repr(text[:100] + ('...' if len(text) > 100 else '')))
-        response = requests.post(f'{url.rstrip("/")}/documents', headers=headers, data=text.encode('utf-8'))
+        response = requests.post(f'{url.rstrip("/")}/documents', headers=headers, data=text.encode('utf-8'),timeout=timeout)
         response.raise_for_status()
     except requests.exceptions.HTTPError as e:
         if response.status_code == 401:
@@ -81,6 +81,7 @@ def main():
     parser.add_argument('files', nargs='*', help='Files to upload (optional if piping input)')
     parser.add_argument('-t', '--token', nargs='?', help='Hastebin API token')
     parser.add_argument('--url', default=os.environ.get('POSTHASTE_URL', 'https://hastebin.com'), help='Hastebin server URL')
+    parser.add_argument('--timeout', type=int, default=5, help='Request timeout in seconds')
     args = parser.parse_args()
     if "toptal.com" in args.url:
         print("❌ Error: https://toptal.com is not a valid API endpoint. Use https://hastebin.com instead.")
@@ -103,9 +104,13 @@ def main():
             filepath = os.path.expanduser(filepath)
             if not os.path.isfile(filepath):
                 print(f'Error: File {filepath} not found.', file=sys.stderr)
-                continue
+                sys.exit(1)
             with open(filepath, 'r', encoding='utf-8') as f:
                 text = f.read()
+            if not text:
+                print(f'Error: File {filepath} is empty.', file=sys.stderr)
+                sys.exit(1)
+            print(f"\n📄 Uploading file: {filepath}")
             upload(text, args.url, token=token)
     elif not sys.stdin.isatty():
         text = sys.stdin.read()

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='posthaste-cli',
-    version='0.1.0',
+    version='0.1.1',
     description='A CLI tool to upload text to a hastebin server quickly and cleanly.',
     author='PJ Hayes',
     author_email='archood2next@gmail.com',
