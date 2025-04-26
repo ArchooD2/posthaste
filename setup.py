@@ -9,7 +9,8 @@ setup(
     url='https://github.com/ArchooD2/posthaste',
     packages=find_packages(),
     install_requires=[
-        'requests'
+        'requests',
+        'snaparg',
     ],
     entry_points={
         'console_scripts': [
