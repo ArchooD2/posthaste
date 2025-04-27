@@ -17,7 +17,7 @@ Perfect for sharing code snippets, logs, notes, and more — without needing to 
 - Supports authentication tokens (optional)
 - Save tokens to your environment for later use
 - Choose your own Hastebin server
-- No dependencies beyond `requests` and my [in-house `argparse` sub-in](github.com/ArchooD2/snaparg)
+- No dependencies beyond `requests` and my [in-house `argparse` sub-in](https://github.com/ArchooD2/snaparg)
 - Blazing fast and easy to use
 
 ---
