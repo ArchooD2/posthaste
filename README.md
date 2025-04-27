@@ -23,7 +23,7 @@ Perfect for sharing code snippets, logs, notes, and more — without needing to 
 
 ## 📦 Quick Start
 
-- [`pip install posthaste`](https://pypi.org/project/posthaste/)
+- [`pip install posthaste-cli`](https://pypi.org/project/posthaste-cli/)
 
 - then upload text:
 
