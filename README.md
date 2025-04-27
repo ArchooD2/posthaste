@@ -14,7 +14,6 @@ Perfect for sharing code snippets, logs, notes, and more — without needing to 
 ## ✨ Features
 
 - Upload directly from stdin or from one or more files
-- Supports authentication tokens (optional)
 - Save tokens to your environment for later use
 - Choose your own Hastebin server
 - No dependencies beyond `requests` and my [in-house `argparse` sub-in](github.com/ArchooD2/snaparg)
